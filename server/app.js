@@ -13,12 +13,16 @@ import notificationRoutes from "./modules/notifications/notification.routes.js";
 
 
 
-const app = express();
 app.use(
-    cors({
-        origin: "http://localhost:5173",
-    })
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://dalms-defence-asset-logistics-manag.vercel.app",
+    ],
+    credentials: true,
+  })
 );
+
 
 //middleware
 app.use(express.json());
