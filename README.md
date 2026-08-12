@@ -6,6 +6,18 @@ DALMS provides a centralized dashboard with management modules, searchable recor
 
 ---
 
+## 🚀 Live Demo
+
+**Live Application:** https://dalms-defence-asset-logistics-manag.vercel.app/
+
+**Frontend:** Vercel
+**Backend API:** Render
+**Database:** MongoDB Atlas
+
+> The application is fully deployed and connected to the production backend and MongoDB Atlas database.
+
+---
+
 ## 🌐 Project Overview
 
 Managing assets, employees, inventory, and maintenance records across multiple systems can make tracking and reporting difficult.
@@ -44,6 +56,7 @@ The system combines:
 * Unique Asset ID generation
 * View asset records
 * Search asset records
+* Edit asset records
 * Delete asset records
 * Generate PDF reports
 * Export records to Excel
@@ -54,6 +67,7 @@ The system combines:
 * Create and manage employee records
 * Search employee records
 * View employee records
+* Edit employee records
 * Delete employee records
 * Generate PDF reports
 * Export records to Excel
@@ -64,6 +78,8 @@ The system combines:
 * Manage inventory records
 * Search and view inventory data
 * Track inventory information
+* Edit inventory records
+* Delete inventory records
 * Generate PDF reports
 * Export records to Excel
 * Data visualization
@@ -73,6 +89,8 @@ The system combines:
 * Manage maintenance records
 * Search maintenance information
 * View maintenance records
+* Edit maintenance records
+* Delete maintenance records
 * Generate PDF reports
 * Export records to Excel
 * Data visualization
@@ -89,6 +107,7 @@ DALMS provides reporting functionality across the management modules:
 * Excel export
 * Tabular PDF reports
 * Exportable management records
+* Searchable and structured data
 
 ### 🔐 Authentication & Security
 
@@ -100,9 +119,38 @@ DALMS provides reporting functionality across the management modules:
 * Input validation
 * CORS configuration
 
+### 🔔 Notifications
+
+* Centralized notification management
+* Notification records and API support
+
 ### 🧪 API Testing
 
 Backend REST APIs can be tested using the included Postman collection.
+
+---
+
+## 💡 What This Project Demonstrates
+
+DALMS demonstrates practical experience in:
+
+* Full-stack web application development
+* React frontend development
+* Node.js and Express.js backend development
+* REST API development
+* MongoDB database integration
+* Mongoose data modeling
+* JWT-based authentication
+* Password hashing and security
+* CRUD operations
+* API validation
+* Data visualization
+* PDF and Excel report generation
+* Search and filtering
+* Frontend-backend integration
+* Cloud deployment
+* Production CORS configuration
+* Git and GitHub-based development workflow
 
 ---
 
@@ -153,6 +201,49 @@ Backend REST APIs can be tested using the included Postman collection.
 
 ---
 
+## ☁️ Production Deployment
+
+DALMS uses a separated cloud deployment architecture.
+
+```text
+                         Production Environment
+
+                    ┌─────────────────────────┐
+                    │         Vercel          │
+                    │    React + Vite Client  │
+                    └────────────┬────────────┘
+                                 │
+                           HTTPS / REST API
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │         Render          │
+                    │   Node.js + Express API │
+                    └────────────┬────────────┘
+                                 │
+                              Mongoose
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     MongoDB Atlas       │
+                    │     Cloud Database      │
+                    └─────────────────────────┘
+```
+
+### Production URLs
+
+* **Frontend:** https://dalms-defence-asset-logistics-manag.vercel.app/
+* **Backend API:** https://dalms-defence-asset-logistics-management.onrender.com
+
+### Deployment Technologies
+
+* **Vercel** — Frontend hosting
+* **Render** — Backend hosting
+* **MongoDB Atlas** — Cloud database
+* **GitHub** — Source code repository
+
+---
+
 ## 🧩 Main Modules
 
 | Module                 | Purpose                                    |
@@ -165,6 +256,8 @@ Backend REST APIs can be tested using the included Postman collection.
 | Records                | Search, view and manage stored information |
 | Reporting              | Generate PDF and Excel reports             |
 | Authentication         | Secure user access                         |
+| Administration         | Administrative operations                  |
+| Notifications          | Manage application notifications           |
 
 ---
 
@@ -207,6 +300,12 @@ Backend REST APIs can be tested using the included Postman collection.
 * Postman
 * Nodemon
 
+### Deployment
+
+* Vercel
+* Render
+* MongoDB Atlas
+
 ---
 
 ## 🔒 Security
@@ -227,7 +326,7 @@ DALMS incorporates several backend security and validation mechanisms:
 ## 📁 Project Structure
 
 ```text
-DALMS/
+DALMS-Defence-Asset-Logistics-Management-System/
 │
 ├── client/
 │   ├── public/
@@ -236,11 +335,20 @@ DALMS/
 │   └── .gitignore
 │
 ├── server/
-│   ├── controllers/
-│   ├── models/
+│   ├── config/
+│   ├── middleware/
+│   ├── modules/
+│   │   ├── admins/
+│   │   ├── assets/
+│   │   ├── auth/
+│   │   ├── dashboard/
+│   │   ├── employees/
+│   │   ├── inventory/
+│   │   ├── maintenance/
+│   │   ├── notifications/
+│   │   └── reports/
 │   ├── routes/
-│   ├── services/
-│   ├── validators/
+│   ├── app.js
 │   ├── server.js
 │   ├── package.json
 │   └── .gitignore
@@ -255,6 +363,16 @@ DALMS/
 ---
 
 ## ⚙️ Installation & Setup
+
+### Prerequisites
+
+* Node.js
+* npm
+* MongoDB Atlas account
+* Git
+* Postman (optional)
+
+---
 
 ### 1. Clone the Repository
 
@@ -290,6 +408,8 @@ npm install
 
 ## 🔐 Environment Variables
 
+### Backend Environment Variables
+
 Create a `.env` file inside the `server` directory.
 
 Example:
@@ -300,7 +420,17 @@ MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 ```
 
-> Never commit your real `.env` file or database credentials to GitHub.
+### Frontend Environment Variables
+
+Create a `.env` file inside the `client` directory.
+
+For local development:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+> Never commit your real `.env` files, database credentials, JWT secrets, or other sensitive information to GitHub.
 
 ---
 
@@ -314,7 +444,7 @@ Inside the `server` directory:
 npm run dev
 ```
 
-The backend runs on:
+The backend runs locally on:
 
 ```text
 http://localhost:5000
@@ -336,16 +466,17 @@ Vite will provide the local frontend URL in the terminal.
 
 The backend exposes RESTful APIs for the major DALMS modules.
 
-Main API areas include:
-
-```text
-/api/auth
-/api/assets
-/api/employees
-/api/inventory
-/api/maintenance
-/api/dashboard
-```
+| Module         | Endpoint             |
+| -------------- | -------------------- |
+| Authentication | `/api/auth`          |
+| Assets         | `/api/assets`        |
+| Employees      | `/api/employees`     |
+| Inventory      | `/api/inventory`     |
+| Maintenance    | `/api/maintenance`   |
+| Dashboard      | `/api/dashboard`     |
+| Reports        | `/api/reports`       |
+| Administration | `/api/admins`        |
+| Notifications  | `/api/notifications` |
 
 Authentication-protected endpoints require a valid JWT bearer token.
 
@@ -365,6 +496,9 @@ Typical API testing includes:
 * Inventory operations
 * Maintenance operations
 * Dashboard statistics
+* Reports
+* Administrative operations
+* Notifications
 
 ---
 
@@ -393,42 +527,28 @@ DALMS uses **Recharts** to provide graphical representations of management data.
 
 Charts help users understand operational information more quickly than raw records alone.
 
+The dashboard provides visual summaries of important operational data.
+
 ---
 
-## 🚀 Deployment
+## 📌 Production Status
 
-The application can be deployed using a separate frontend and backend deployment architecture.
+DALMS is currently **deployed and operational**.
 
-```text
-Frontend
-   ↓
-React/Vite deployment
+### Verified Production Features
 
-        ↓ REST API
-
-Backend
-   ↓
-Node.js/Express deployment
-
-        ↓
-
-MongoDB
-```
-
-### Production Configuration
-
-Before deployment:
-
-1. Configure production environment variables.
-2. Update the frontend API base URL.
-3. Configure backend CORS for the deployed frontend.
-4. Ensure MongoDB is accessible from the backend deployment.
-5. Never expose JWT secrets or database credentials.
-6. Build the frontend using:
-
-```bash
-npm run build
-```
+* Authentication and login
+* Dashboard statistics
+* Interactive charts
+* Asset management
+* Employee management
+* Inventory management
+* Maintenance management
+* Search and records
+* PDF exports
+* Excel exports
+* REST API communication
+* MongoDB Atlas connectivity
 
 ---
 
@@ -436,34 +556,31 @@ npm run build
 
 ### 🔐 Login
 
-![DALMS Login](screenshots/login.png)
+*Add your login screenshot here.*
 
 ### 📊 Dashboard
 
-![DALMS Dashboard](screenshots/dashboard.png)
+*Add your dashboard screenshot here.*
 
 ### 📦 Asset Management
 
-![Asset Management](screenshots/assets.png)
+*Add your asset management screenshot here.*
 
 ### 👥 Employee Management
 
-![Employee Management](screenshots/employees.png)
+*Add your employee management screenshot here.*
 
 ### 📋 Inventory Management
 
-![Inventory Management](screenshots/inventory.png)
+*Add your inventory screenshot here.*
 
 ### 🔧 Maintenance Management
 
-![Maintenance Management](screenshots/maintenance.png)
+*Add your maintenance screenshot here.*
 
 ### 🔎 Records & Search
 
-![Records and Search](screenshots/records.png)
-
----
-
+*Add your records/search screenshot here.*
 
 ---
 
@@ -490,11 +607,13 @@ Potential future improvements include:
 * Advanced audit logging
 * Real-time notifications
 * Advanced analytics
-* Elastic Stack integration for centralized logging and monitoring
+* Elastic Stack integration for centralized application logging and monitoring
 * Docker-based deployment
 * CI/CD pipeline
 * Advanced filtering and reporting
 * Automated backups
+* Asset lifecycle tracking
+* Fine-grained user permissions
 
 ---
 
@@ -512,8 +631,10 @@ It is **not an official application of DRDO, the Indian Army, or any Government 
 
 B.Tech — Computer Science & Engineering (Data Science)
 
+GitHub: https://github.com/swejalgupta2005
+
 ---
 
-## ⭐ If you find this project useful
+## ⭐ If You Find This Project Useful
 
 Consider giving the repository a ⭐ on GitHub.
