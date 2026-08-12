@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -37,12 +38,12 @@ const Login = () => {
             console.log("Login Response:", response.data);
 
             const token = response.data.data.token;
-const user = response.data.data.user;
+            const user = response.data.data.user;
 
-localStorage.setItem("token", token);
-localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
 
-navigate("/dashboard");
+            navigate("/dashboard");
         } catch (error) {
             console.error("Login error:", error);
 
@@ -55,10 +56,19 @@ navigate("/dashboard");
         }
     };
 
+    const handleDemoLogin = () => {
+        setEmail("demo@dalms.in");
+        setPassword("demo");
+        setError("");
+    };
+
     return (
         <div className="login-page">
 
-            {/* Left Branding Section */}
+            {/* =========================
+                LEFT BRANDING SECTION
+            ========================= */}
+
             <div className="login-brand-section">
 
                 <div className="login-brand-content">
@@ -82,48 +92,69 @@ navigate("/dashboard");
                     </p>
 
                     <div className="login-security-badge">
+
                         <ShieldCheck size={18} />
+
                         <span>
                             Secure Government Asset Management
                         </span>
+
                     </div>
 
                 </div>
 
-                {/* Decorative Illustration */}
+                {/* =========================
+                    DECORATIVE ILLUSTRATION
+                ========================= */}
+
                 <div className="login-illustration">
 
                     <div className="illustration-circle circle-one"></div>
+
                     <div className="illustration-circle circle-two"></div>
 
                     <div className="illustration-dashboard">
 
                         <div className="illustration-header">
+
                             <span></span>
                             <span></span>
                             <span></span>
+
                         </div>
 
                         <div className="illustration-content">
 
                             <div className="illustration-card">
-                                <strong>Assets</strong>
+
+                                <strong>
+                                    Assets
+                                </strong>
+
                                 <span></span>
                                 <span></span>
+
                             </div>
 
                             <div className="illustration-card">
-                                <strong>Inventory</strong>
+
+                                <strong>
+                                    Inventory
+                                </strong>
+
                                 <span></span>
                                 <span></span>
+
                             </div>
 
                             <div className="illustration-chart">
+
                                 <div></div>
                                 <div></div>
                                 <div></div>
                                 <div></div>
                                 <div></div>
+
                             </div>
 
                         </div>
@@ -134,21 +165,41 @@ navigate("/dashboard");
 
             </div>
 
-            {/* Right Login Section */}
+            {/* =========================
+                RIGHT LOGIN SECTION
+            ========================= */}
+
             <div className="login-form-section">
 
                 <div className="login-form-container">
 
+                    {/* =========================
+                        MOBILE BRAND
+                    ========================= */}
+
                     <div className="login-mobile-brand">
+
                         <div className="login-mobile-logo">
                             Defence
                         </div>
 
                         <div>
-                            <strong>DALMS</strong>
-                            <span>Asset Management</span>
+
+                            <strong>
+                                DALMS
+                            </strong>
+
+                            <span>
+                                Asset Management
+                            </span>
+
                         </div>
+
                     </div>
+
+                    {/* =========================
+                        LOGIN HEADING
+                    ========================= */}
 
                     <div className="login-heading">
 
@@ -156,7 +207,9 @@ navigate("/dashboard");
                             Welcome back
                         </span>
 
-                        <h2>Admin Login</h2>
+                        <h2>
+                            Admin Login
+                        </h2>
 
                         <p>
                             Sign in to access your DALMS dashboard.
@@ -164,12 +217,17 @@ navigate("/dashboard");
 
                     </div>
 
+                    {/* =========================
+                        LOGIN FORM
+                    ========================= */}
+
                     <form
                         onSubmit={handleLogin}
                         className="login-form"
                     >
 
                         {/* Email */}
+
                         <div className="login-field">
 
                             <label htmlFor="email">
@@ -196,6 +254,7 @@ navigate("/dashboard");
                         </div>
 
                         {/* Password */}
+
                         <div className="login-field">
 
                             <label htmlFor="password">
@@ -235,11 +294,13 @@ navigate("/dashboard");
                                             : "Show password"
                                     }
                                 >
+
                                     {showPassword ? (
                                         <EyeOff size={18} />
                                     ) : (
                                         <Eye size={18} />
                                     )}
+
                                 </button>
 
                             </div>
@@ -247,6 +308,7 @@ navigate("/dashboard");
                         </div>
 
                         {/* Error */}
+
                         {error && (
                             <div className="login-error">
                                 {error}
@@ -254,11 +316,13 @@ navigate("/dashboard");
                         )}
 
                         {/* Login Button */}
+
                         <button
                             type="submit"
                             className="login-button"
                             disabled={loading}
                         >
+
                             <span>
                                 {loading
                                     ? "Signing in..."
@@ -268,9 +332,56 @@ navigate("/dashboard");
                             {!loading && (
                                 <ArrowRight size={19} />
                             )}
+
                         </button>
 
                     </form>
+
+                    {/* =========================
+                        DEMO ACCESS
+                    ========================= */}
+
+                    <div className="demo-access-card">
+
+                        <div className="demo-access-content">
+
+                            <strong>
+                                Demo Access
+                            </strong>
+
+                            <p>
+                                Want to explore DALMS? Use the demo account.
+                            </p>
+
+                            <div className="demo-credentials">
+
+                                <span>
+                                    <b>Email:</b>{" "}
+                                    demo@dalms.in
+                                </span>
+
+                                <span>
+                                    <b>Password:</b>{" "}
+                                    demo
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            className="demo-login-button"
+                            onClick={handleDemoLogin}
+                        >
+                            Use Demo Account
+                        </button>
+
+                    </div>
+
+                    {/* =========================
+                        FOOTER
+                    ========================= */}
 
                     <div className="login-footer">
 
@@ -293,3 +404,6 @@ navigate("/dashboard");
 };
 
 export default Login;
+
+
+

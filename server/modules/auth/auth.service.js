@@ -84,3 +84,40 @@ export const loginUser = async (email, password)=>{
         token,
     };
 };
+export const seedDemoAdmin = async () => {
+    try {
+        const demoEmail = "demo@dalms.in";
+
+        const existingDemo = await User.findOne({
+            email: demoEmail,
+        });
+
+        if (existingDemo) {
+            console.log("Demo Admin account already exists.");
+            return;
+        }
+
+        const hashedPassword = await bcrypt.hash("demo", 10);
+
+        await User.create({
+            employeeId: "DEMO001",
+            fullName: "DALMS Demo Administrator",
+            email: demoEmail,
+            password: hashedPassword,
+            role: "Admin",
+            department: "Administration",
+            designation: "Demo Administrator",
+            joiningDate: new Date(),
+            mobile: "9999999999",
+            officeLocation: "DALMS Demo Environment",
+            status: "Active",
+        });
+
+        console.log("Demo Admin account created successfully.");
+    } catch (error) {
+        console.error(
+            "Demo Admin creation failed:",
+            error.message
+        );
+    }
+};

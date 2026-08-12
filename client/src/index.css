@@ -1356,6 +1356,7 @@ body {
     background: #f8fafc;
 }
 
+
 /* =========================================================
    LEFT BRANDING SECTION
 ========================================================= */
@@ -6424,4 +6425,59 @@ body {
     .asset-search-box input {
         height: 42px;
     }
+}
+/* =========================
+   DEMO ACCESS
+========================= */
+
+.demo-access-card {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid #dbe3ea;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+.demo-access-content strong {
+    display: block;
+    font-size: 15px;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.demo-access-content p {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.demo-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 13px;
+    color: #475569;
+}
+
+.demo-credentials b {
+    color: #334155;
+}
+
+.demo-login-button {
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.demo-login-button:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
 }
