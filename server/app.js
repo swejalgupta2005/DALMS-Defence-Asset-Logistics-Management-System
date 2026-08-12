@@ -26,6 +26,7 @@ app.use(express.json());
 
 
 //routes
+app.use("/", indexRoutes);
 app.use("/api/auth",authRoutes);
 app.use("/api/assets", assetRoutes);
 app.use("/api/employees",employeeRoutes);
