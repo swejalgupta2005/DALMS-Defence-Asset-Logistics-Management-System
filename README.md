@@ -10,11 +10,20 @@ DALMS provides a centralized dashboard with management modules, searchable recor
 
 **Live Application:** https://dalms-defence-asset-logistics-manag.vercel.app/
 
+### 🔑 Demo Access
+
+Use the following demo account to explore the deployed application:
+
+**Email:** `demo@dalms.in`
+**Password:** `demo`
+
+> The demo account is provided for portfolio and project demonstration purposes.
+
 **Frontend:** Vercel
 **Backend API:** Render
 **Database:** MongoDB Atlas
 
-> The application is fully deployed and connected to the production backend and MongoDB Atlas database.
+> The application is deployed and connected to the production backend and MongoDB Atlas database.
 
 ---
 
@@ -56,8 +65,11 @@ The system combines:
 * Unique Asset ID generation
 * View asset records
 * Search asset records
+* Filter asset records
 * Edit asset records
 * Delete asset records
+* Assign assets to employees
+* Track asset status
 * Generate PDF reports
 * Export records to Excel
 * Data visualization
@@ -67,6 +79,7 @@ The system combines:
 * Create and manage employee records
 * Search employee records
 * View employee records
+* Filter employee records
 * Edit employee records
 * Delete employee records
 * Generate PDF reports
@@ -91,20 +104,23 @@ The system combines:
 * View maintenance records
 * Edit maintenance records
 * Delete maintenance records
+* Track maintenance information
 * Generate PDF reports
 * Export records to Excel
 * Data visualization
 
-### 🔎 Search & Records
+### 🔎 Search & Filtering
 
-Each major management module provides searchable and structured records for easier data retrieval and management.
+Major management modules provide structured search and filtering functionality for faster data retrieval.
+
+Users can search records using relevant fields and apply filters based on available categories and statuses.
 
 ### 📄 Reporting & Export
 
-DALMS provides reporting functionality across the management modules:
+DALMS provides reporting functionality across management modules:
 
 * PDF report generation
-* Excel export
+* Excel/CSV-compatible export
 * Tabular PDF reports
 * Exportable management records
 * Searchable and structured data
@@ -118,11 +134,13 @@ DALMS provides reporting functionality across the management modules:
 * HTTP security headers using Helmet
 * Input validation
 * CORS configuration
+* Secure handling of environment variables
 
 ### 🔔 Notifications
 
 * Centralized notification management
-* Notification records and API support
+* Notification records
+* Notification API support
 
 ### 🧪 API Testing
 
@@ -145,7 +163,8 @@ DALMS demonstrates practical experience in:
 * CRUD operations
 * API validation
 * Data visualization
-* PDF and Excel report generation
+* PDF report generation
+* Excel/CSV export
 * Search and filtering
 * Frontend-backend integration
 * Cloud deployment
@@ -179,10 +198,10 @@ DALMS demonstrates practical experience in:
                     ┌─────────────────────────┐
                     │   Node.js + Express     │
                     │                         │
-                    │ Authentication         │
-                    │ Validation              │
-                    │ Business Logic          │
-                    │ REST API Routes         │
+                    │ Authentication          │
+                    │ Validation               │
+                    │ Business Logic           │
+                    │ REST API Routes          │
                     └────────────┬────────────┘
                                  │
                               Mongoose
@@ -320,6 +339,7 @@ DALMS incorporates several backend security and validation mechanisms:
 * CORS configuration
 * Request validation using Joi and Express Validator
 * Sensitive `.env` files excluded from version control
+* Passwords are never returned in authentication responses
 
 ---
 
@@ -355,6 +375,15 @@ DALMS-Defence-Asset-Logistics-Management-System/
 │
 ├── postman/
 │   └── API collection files
+│
+├── screenshots/
+│   ├── login.png
+│   ├── dashboard.png
+│   ├── assets.png
+│   ├── employees.png
+│   ├── inventory.png
+│   ├── maintenance.png
+│   └── records.png
 │
 ├── .gitignore
 └── README.md
@@ -430,7 +459,9 @@ For local development:
 VITE_API_URL=http://localhost:5000
 ```
 
-> Never commit your real `.env` files, database credentials, JWT secrets, or other sensitive information to GitHub.
+For production, configure the frontend API URL to point to the deployed Render backend.
+
+> Never commit real `.env` files, database credentials, JWT secrets, or other sensitive information to GitHub.
 
 ---
 
@@ -486,7 +517,7 @@ Authentication-protected endpoints require a valid JWT bearer token.
 
 The repository includes a `postman/` directory containing API testing resources.
 
-The collection can be imported into Postman to test the backend endpoints.
+The collection can be imported into Postman to test backend endpoints.
 
 Typical API testing includes:
 
@@ -531,6 +562,38 @@ The dashboard provides visual summaries of important operational data.
 
 ---
 
+## 📸 Screenshots
+
+### 🔐 Login
+
+![DALMS Login](screenshots/login.png)
+
+### 📊 Dashboard
+
+![DALMS Dashboard](screenshots/dashboard.png)
+
+### 📦 Asset Management
+
+![DALMS Asset Management](screenshots/assets.png)
+
+### 👥 Employee Management
+
+![DALMS Employee Management](screenshots/employees.png)
+
+### 📋 Inventory Management
+
+![DALMS Inventory Management](screenshots/inventory.png)
+
+### 🔧 Maintenance Management
+
+![DALMS Maintenance Management](screenshots/maintenance.png)
+
+### 🔎 Records & Search
+
+![DALMS Records and Search](screenshots/records.png)
+
+---
+
 ## 📌 Production Status
 
 DALMS is currently **deployed and operational**.
@@ -538,49 +601,19 @@ DALMS is currently **deployed and operational**.
 ### Verified Production Features
 
 * Authentication and login
+* Demo account access
 * Dashboard statistics
 * Interactive charts
 * Asset management
 * Employee management
 * Inventory management
 * Maintenance management
-* Search and records
+* Search and filtering
 * PDF exports
 * Excel exports
 * REST API communication
 * MongoDB Atlas connectivity
-
----
-
-## 📸 Screenshots
-
-### 🔐 Login
-
-*Add your login screenshot here.*
-
-### 📊 Dashboard
-
-*Add your dashboard screenshot here.*
-
-### 📦 Asset Management
-
-*Add your asset management screenshot here.*
-
-### 👥 Employee Management
-
-*Add your employee management screenshot here.*
-
-### 📋 Inventory Management
-
-*Add your inventory screenshot here.*
-
-### 🔧 Maintenance Management
-
-*Add your maintenance screenshot here.*
-
-### 🔎 Records & Search
-
-*Add your records/search screenshot here.*
+* Cloud deployment
 
 ---
 
@@ -638,3 +671,4 @@ GitHub: https://github.com/swejalgupta2005
 ## ⭐ If You Find This Project Useful
 
 Consider giving the repository a ⭐ on GitHub.
+
